@@ -11,7 +11,7 @@ RUN yum install -y gcc gcc-c++ \
                    yum-utils rpm-build && \
     yum clean all
 
-RUN useradd builder -u 1000 -m -G users,wheel && \
+RUN useradd builder -u 1000 -g 1000 -m -G users,wheel && \
     echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     echo "# macros"                      >  /home/builder/.rpmmacros && \
     echo "%_topdir    /home/builder/rpm" >> /home/builder/.rpmmacros && \

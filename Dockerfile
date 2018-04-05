@@ -10,7 +10,7 @@ RUN yum install -y gcc gcc-c++ \
                    perl \
                    yum-utils rpm-build && \
     yum clean all
-
+RUN groupadd -g 1000 builder
 RUN useradd builder -u 1000 -g 1000 -m -G users,wheel && \
     echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     echo "# macros"                      >  /home/builder/.rpmmacros && \
